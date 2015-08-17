@@ -6,6 +6,16 @@ module.exports = {
     'UIPort': 9001
     'serverPort': 9002
 
+    'data': {
+        'src': 'app/data/data.json'
+        'dest': 'build/data'
+    }
+
+    'audio': {
+        'src': 'app/audio/*',
+        'dest': 'build/audio'
+    }
+
     'styles': {
         'src': 'app/styles/**/*.scss'
         'dest': 'build/css'
