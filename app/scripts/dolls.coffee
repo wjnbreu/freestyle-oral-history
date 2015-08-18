@@ -66,25 +66,26 @@ Doll.prototype =
 
 
 
-            #------------------------
-            # Add to PIXI
-            #------------------------
-            self.sprite.interactive = true
-            self.sprite.buttonMode = true
-            self.sprite.width = self.width
-            self.sprite.height = self.height
-            self.sprite.position.set(self.x, self.y)
-            
+        #------------------------
+        # Add to PIXI
+        #------------------------
+        self.sprite.interactive = true
+        self.sprite.buttonMode = true
+        self.sprite.width = self.width
+        self.sprite.height = self.height
+        self.sprite.position.set(self.x, self.y)
+        
 
-            self.sprite.on 'mousedown', (event) ->
-                event.stopPropagation()
-                Info.on(self)
+        self.sprite.on 'mousedown', (event) ->
+            event.stopPropagation()
+            Info.on(self)
 
             # console.log self
 
-            Stage.addChild(self.sprite)
+        
 
-            return
+        Stage.addChild(self.sprite)
+        return
 
     
 

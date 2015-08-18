@@ -34,6 +34,7 @@ objects = []
 
 
 animate = ->
+    console.log Stage.stage.children.length
     for doll in dolls
 
         #moving right
@@ -125,5 +126,5 @@ $.ajax
                 console.log 'Image failed to process'
             else
                 console.log 'All images loaded'
-                setTimeout(animate, 1000)
+                setTimeout(animate, 100)
 

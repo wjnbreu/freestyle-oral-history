@@ -63,11 +63,11 @@ h1 {
   padding: 20px auto auto 20px;
   color: black;
   background: rgba(255, 255, 255, 0.9);
-  border: 5px solid black;
   border-radius: 5px;
-  display: none; }
+  opacity: 0;
+  transition: opacity 0.4s linear; }
   .info.active {
-    display: block; }
+    opacity: 1; }
   .info h2 {
     padding: 10px 0 0 20px;
     line-height: 1;
