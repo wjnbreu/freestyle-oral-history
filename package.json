@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "jquery": "^2.1.4",
+    "pixi.js": "^3.0.7",
     "velocity-animate": "^1.2.2"
   }
 }

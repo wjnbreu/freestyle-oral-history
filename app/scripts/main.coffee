@@ -1,5 +1,6 @@
 $ = require 'jquery'
 Velocity = require 'velocity-animate'
+PIXI = require 'pixi.js'
 
 
 
@@ -11,6 +12,22 @@ info = document.getElementById 'info'
 loopCycle = null
 audio = document.getElementById 'audio'
 audiomp3 = document.getElementById 'mp3'
+
+winWidth = window.innerWidth
+winHeight = window.innerHeight
+
+parent = document.getElementById 'header'
+
+renderer = PIXI.autoDetectRenderer(winWidth, winHeight, {backgroundColor: 0x1099bb})
+parent.appendChild renderer.view
+stage = new PIXI.Container()
+
+
+
+
+
+
+
 
 
 
@@ -82,58 +99,133 @@ Doll.prototype=
         self = this
 
         image = new Image()
-        image.classList.add 'doll'
-        parent = document.getElementById 'header'
-
 
         image.onload = ->
-
-            image.setAttribute 'draggable', 'false'
-
-            parent.appendChild(image)
-
+            
             if self.direction == 0
                 imageObject =
                     x: -self.xPos
                     y: self.yPos
+                    width: image.width
+                    height: image.height
                     img: image
+                    sprite: PIXI.Sprite.fromImage(imagePath)
                     speed: Math.random()
                     direction: self.direction
-            
             else
                 imageObject =
                     x: self.xPos + self.width
                     y: self.yPos
+                    width: image.width
+                    height: image.height
                     img: image
+                    sprite: PIXI.Sprite.fromImage(imagePath)
                     speed: Math.random()
                     direction: self.direction
 
 
+            #------------------------
+            # Add to PIXI
+            #------------------------
+            imageObject.sprite.interactive = true
+            imageObject.sprite.width = imageObject.width
+            imageObject.sprite.height = imageObject.height
+            imageObject.sprite.position.set(500, 500)
+            imageObject.sprite.on 'mousedown', ->
+                self.onDown()
+
             objects.push(imageObject)
+
             
 
-            image.style.left = imageObject.x
-            image.style.top = imageObject.y
+            stage.addChild(imageObject.sprite)
 
-            image.addEventListener 'click', (e) ->
+
+            imagesLoaded++
+            
+            self.checkStart()
+
+
+        
+        # Set initial source
+        image.src = imagePath
+
+
+            # self.animate()
+
+            # renderer.render stage
+
+
+        
+
+        
+
+        
+
+        
+
+
+        
+
+
+        # image.onload = ->
+
+        #     image.setAttribute 'draggable', 'false'
+
+        #     parent.appendChild(image)
+
+        #     if self.direction == 0
+        #         imageObject =
+        #             x: -self.xPos
+        #             y: self.yPos
+        #             img: image
+        #             speed: Math.random()
+        #             direction: self.direction
+            
+        #     else
+        #         imageObject =
+        #             x: self.xPos + self.width
+        #             y: self.yPos
+        #             img: image
+        #             speed: Math.random()
+        #             direction: self.direction
+
+
+        #     objects.push(imageObject)
+            
+
+        #     image.style.left = imageObject.x
+        #     image.style.top = imageObject.y
+
+        #     image.addEventListener 'click', (e) ->
                 
-                e.stopPropagation();
+        #         e.stopPropagation();
 
-                self.info()
+        #         self.info()
 
-            document.body.addEventListener 'click', ->
-                self.clearInfo()
+        #     document.body.addEventListener 'click', ->
+        #         self.clearInfo()
 
 
 
         
 
-            imagesLoaded++
+        #     imagesLoaded++
 
-            self.checkStart()
+        #     self.checkStart()
 
 
-        image.src = imagePath
+        # image.src = imagePath
+
+    animate: ->
+        self = this
+        requestAnimationFrame(->
+            self.animate()
+            )
+        renderer.render(stage)
+
+    onDown: ->
+        console.log 'hit'
 
 
 
@@ -163,7 +255,7 @@ Doll.prototype=
     checkStart: ->
         self = this
         if imagesLoaded == dollData.length
-            draw()
+            self.animate()
 
 
 
@@ -178,7 +270,6 @@ $.ajax
     success: (data) ->
         for item in data
             dollData = data
-            console.log item
             new Doll(item)
 
 
