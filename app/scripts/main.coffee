@@ -18,10 +18,11 @@ winHeight = window.innerHeight
 
 parent = document.getElementById 'header'
 
-renderer = PIXI.autoDetectRenderer(winWidth, winHeight, {backgroundColor: 0x1099bb})
+renderer = PIXI.autoDetectRenderer(winWidth, winHeight, {transparent: true})
 parent.appendChild renderer.view
 stage = new PIXI.Container()
 
+maxUp = 10
 
 
 
@@ -32,36 +33,65 @@ stage = new PIXI.Container()
 
 
 
-draw = ->
+
+
+animate = ->
+
     for image in objects
         #moving right
         if image.direction == 0
-
+            
             #swap directions at borders
             if image.x > window.innerWidth - 200
                 image.direction = 1
+            
             else
                 image.x += image.speed
+                image.sprite.position.x += image.speed
 
-            Velocity(image.img, {
-                translateX: image.x + 'px'
-                translateY: image.y + 'px'
-                },0)
+                if image.goingUp
+                    
+                    if image.upCount < maxUp
+                        image.sprite.position.y -= 0.5
+                        image.upCount += 1
+                    else
+                        image.goingUp = false
 
-        #LEFT
+                else
+                    if image.upCount > 0
+                        image.upCount -= 1
+                        image.sprite.position.y += 0.5
+                    else
+                        image.goingUp = true
+
+        
+        #moving left
         else
             if image.x < 0
                 image.direction = 0
             else
                 image.x -= image.speed
-            
-            Velocity(image.img, {
-                translateX: image.x + 'px'
-                translateY: image.y + 'px'
-                },0)
+                image.sprite.position.x -= image.speed
+
+                if image.goingUp
+                    
+                    if image.upCount < maxUp
+                        image.sprite.position.y -= 1
+                        image.upCount += 1
+                    else
+                        image.goingUp = false
+
+                else
+                    if image.upCount > 0
+                        image.upCount -= 0.5
+                        image.sprite.position.y += 0.5
+                    else
+                        image.goingUp = true
+                
 
 
-    loopCycle = requestAnimationFrame(draw)
+    requestAnimationFrame(animate)
+    renderer.render(stage)
 
 
 
@@ -112,6 +142,8 @@ Doll.prototype=
                     sprite: PIXI.Sprite.fromImage(imagePath)
                     speed: Math.random()
                     direction: self.direction
+                    upCount: 0
+                    goingUp: true
             else
                 imageObject =
                     x: self.xPos + self.width
@@ -122,17 +154,22 @@ Doll.prototype=
                     sprite: PIXI.Sprite.fromImage(imagePath)
                     speed: Math.random()
                     direction: self.direction
+                    upCount: 0
+                    goingUp: false
+
+            #scale image
+            newWidth = (imageObject.width * 400) / imageObject.height
 
 
             #------------------------
             # Add to PIXI
             #------------------------
             imageObject.sprite.interactive = true
-            imageObject.sprite.width = imageObject.width
-            imageObject.sprite.height = imageObject.height
-            imageObject.sprite.position.set(500, 500)
+            imageObject.sprite.width = newWidth
+            imageObject.sprite.height = 400
+            imageObject.sprite.position.set(imageObject.x, imageObject.y)
             imageObject.sprite.on 'mousedown', ->
-                self.onDown()
+                self.info()
 
             objects.push(imageObject)
 
@@ -150,79 +187,8 @@ Doll.prototype=
         # Set initial source
         image.src = imagePath
 
+    
 
-            # self.animate()
-
-            # renderer.render stage
-
-
-        
-
-        
-
-        
-
-        
-
-
-        
-
-
-        # image.onload = ->
-
-        #     image.setAttribute 'draggable', 'false'
-
-        #     parent.appendChild(image)
-
-        #     if self.direction == 0
-        #         imageObject =
-        #             x: -self.xPos
-        #             y: self.yPos
-        #             img: image
-        #             speed: Math.random()
-        #             direction: self.direction
-            
-        #     else
-        #         imageObject =
-        #             x: self.xPos + self.width
-        #             y: self.yPos
-        #             img: image
-        #             speed: Math.random()
-        #             direction: self.direction
-
-
-        #     objects.push(imageObject)
-            
-
-        #     image.style.left = imageObject.x
-        #     image.style.top = imageObject.y
-
-        #     image.addEventListener 'click', (e) ->
-                
-        #         e.stopPropagation();
-
-        #         self.info()
-
-        #     document.body.addEventListener 'click', ->
-        #         self.clearInfo()
-
-
-
-        
-
-        #     imagesLoaded++
-
-        #     self.checkStart()
-
-
-        # image.src = imagePath
-
-    animate: ->
-        self = this
-        requestAnimationFrame(->
-            self.animate()
-            )
-        renderer.render(stage)
 
     onDown: ->
         console.log 'hit'
@@ -234,7 +200,6 @@ Doll.prototype=
 
         name = self.name
         bio = self.bio
-
         template = "<h2>#{name}</h2><p>#{bio}</p>"
         info.classList.add 'active'
         info.innerHTML = template
@@ -242,6 +207,8 @@ Doll.prototype=
         mp3.setAttribute 'src', self.audio
         audio.load()
         audio.play()
+
+
 
     clearInfo: ->
         self = this
@@ -255,7 +222,7 @@ Doll.prototype=
     checkStart: ->
         self = this
         if imagesLoaded == dollData.length
-            self.animate()
+            animate()
 
 
 
