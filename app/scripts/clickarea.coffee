@@ -22,7 +22,11 @@ module.exports = ->
 
 
     window.addEventListener 'resize', ->
-        console.log 'resize'
+        graphics.clear()
+
+        graphics.drawRect(0, 0, window.innerWidth, window.innerHeight)
+        graphics.hitArea = new PIXI.Rectangle(0, 0, window.innerWidth, window.innerHeight)
+        
 
 
     return graphics
