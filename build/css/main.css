@@ -45,7 +45,7 @@ body {
   background-attachment: fixed, fixed;
   background-size: cover, 40px;
   overflow: auto;
-  font-family: Helvetica, 'bit';
+  font-family: Verdana, Helvetica, 'bit';
   overflow-x: hidden; }
 
 h1, h2, h3, h4 {

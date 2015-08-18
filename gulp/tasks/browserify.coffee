@@ -32,7 +32,7 @@ gulp.task 'browserify', ->
                 debug: true
             }))
         # .pipe(ngAnnotate())
-        # .pipe(uglify())
+        .pipe(uglify())
         .pipe(gulp.dest('./build/js'))
         .pipe(gulpif(browserSync.active, browserSync.reload({
             stream: true

@@ -7,9 +7,8 @@ audiomp3 = document.getElementById 'mp3'
 
 
 Info =
+    
     on: (item) ->
-        
-        console.log item
         name = item.name
         bio = item.bio
         template = "<h2>#{name}</h2><p>#{bio}</p>"

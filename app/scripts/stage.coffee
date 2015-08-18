@@ -1,6 +1,8 @@
 'use strict'
 
 PIXI = require 'pixi.js'
+Animate = require './animate'
+ClickArea = require './clickarea'
 
 
 Stage =
@@ -18,6 +20,14 @@ Stage =
         self.renderer = PIXI.autoDetectRenderer(winWidth, winHeight, {transparent: true})
         parent.appendChild self.renderer.view
         self.stage = new PIXI.Container()
+
+        #pass stage to animate
+        Animate.setStage(self.stage)
+        Animate.setRenderer(self.renderer)
+
+        #Set up graphics click area
+        clickBox = ClickArea()
+        self.stage.addChild(clickBox)
 
         return self.stage
 

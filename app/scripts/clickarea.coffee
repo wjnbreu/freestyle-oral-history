@@ -24,6 +24,9 @@ module.exports = ->
     window.addEventListener 'resize', ->
         graphics.clear()
 
+        graphics.interactive = true
+        graphics.buttonMode = true
+
         graphics.drawRect(0, 0, window.innerWidth, window.innerHeight)
         graphics.hitArea = new PIXI.Rectangle(0, 0, window.innerWidth, window.innerHeight)
         
