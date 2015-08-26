@@ -23,7 +23,7 @@ Doll = (item, image) ->
     self.x = 0
     self.y = 0
     self.width = 0
-    self.height = 400
+    self.height = Math.floor(window.innerHeight / 2)
     self.img = image
     self.sprite = PIXI.Sprite.fromImage(item.image)
     self.speed = Math.random()
@@ -52,14 +52,14 @@ Doll.prototype =
             self.x = -self.xPos
             self.y = self.yPos
             #Keep aspect
-            self.width = (self.img.width * 400) / self.img.height
+            self.width = (self.img.width * self.height) / self.img.height
             self.goingUp = true
                 
 
 
         else
 
-            self.width = (self.img.width * 400) / self.img.height
+            self.width = (self.img.width * self.height) / self.img.height
             self.x = self.xPos + self.width
             self.y = self.yPos
             self.goingUp = false

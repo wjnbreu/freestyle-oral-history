@@ -1,10 +1,11 @@
 #REQUIRES
-$ = require 'jquery'
 async = require 'async'
 PIXI = require 'pixi.js'
 Doll = require './dolls'
 Stage = require './stage'
 Animate = require './animate'
+Video = require './video'
+Nav = require './nav'
 
 
 #Data containers
@@ -20,8 +21,13 @@ $.ajax
 
         stage = Stage.init()
 
-        
+        #Bind all videos
+        Video.init()
 
+        #Add headroom
+        Nav()
+
+    
         async.each data, ((item, callback) ->
 
             image = new Image()

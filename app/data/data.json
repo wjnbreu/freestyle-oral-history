@@ -1,31 +1,31 @@
 [
     {
         "name": "Debbie Deb",
-        "image": "images/doll1.gif",
+        "image": "images/debbie.png",
         "bio": "Bio about Debbie Deb",
         "audio": "audio/computer.mp3"
     },
     {
         "name": "Pretty Tony",
-        "image": "images/doll2.gif",
+        "image": "images/debbie.png",
         "bio": "Bio about Pretty Tony",
         "audio": "audio/pebbles.mp3"
     },
     {
         "name": "Trinere",
-        "image": "images/doll3.gif",
+        "image": "images/debbie.png",
         "bio": "Bio about Trinere",
         "audio": "audio/lifetime.mp3"
     },
     {
         "name": "Shannon",
-        "image": "images/doll4.gif",
+        "image": "images/debbie.png",
         "bio": "Bio about Shannon",
         "audio": "audio/computer.mp3"
     },
     {
         "name": "Freestyle",
-        "image": "images/doll5.gif",
+        "image": "images/debbie.png",
         "bio": "Bio about Freestyle",
         "audio": "audio/lifetime.mp3"
     }

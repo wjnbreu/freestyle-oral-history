@@ -12,7 +12,7 @@ Stage =
 
     init: ->
         self = this
-        parent = document.getElementById 'header'
+        parent = document.getElementById 'graphics'
         winWidth = window.innerWidth
         winHeight = window.innerHeight
 
@@ -29,11 +29,25 @@ Stage =
         clickBox = ClickArea()
         self.stage.addChild(clickBox)
 
+        #listen for resize
+        window.addEventListener('resize', ->
+            self.resize()
+        ,false)
+
         return self.stage
 
     addChild: (child) ->
         self = this
         self.stage.addChild(child)
+        return null
+
+
+    resize: ->
+        self = this
+        console.log 'sizing'
+        self.renderer.view.style.width = window.innerWidth + 'px'
+        self.renderer.view.style.height = window.innerHeight + 'px'
+
 
 
 module.exports = Stage

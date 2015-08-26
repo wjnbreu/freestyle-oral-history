@@ -49,6 +49,8 @@
   },
   "dependencies": {
     "async": "^1.4.2",
+    "cash-dom": "^1.0.0",
+    "headroom.js": "^0.7.1",
     "jquery": "^2.1.4",
     "pixi.js": "^3.0.7",
     "q": "^1.4.1",
