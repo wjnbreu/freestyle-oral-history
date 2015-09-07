@@ -1,11 +1,15 @@
 .body-wrap {
   padding-left: 0;
   padding-right: 0;
+  max-width: 100% !important;
 }
+
+
 
 .body {
   background-size: 40px;
   color: blue;
+
 }
 
 .page,
@@ -17,4 +21,8 @@
   &.hidden {
     display: none;
   }
+}
+
+.main-nav{
+    z-index: 9 !important;
 }

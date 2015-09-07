@@ -16,6 +16,8 @@ Stage =
         winWidth = window.innerWidth
         winHeight = window.innerHeight
 
+        PIXI.scaleModes.DEFAULT = PIXI.scaleModes.NEAREST;
+
         #PIXI Setup
         self.renderer = PIXI.autoDetectRenderer(winWidth, winHeight, {transparent: true})
         parent.appendChild self.renderer.view
@@ -41,12 +43,30 @@ Stage =
         self.stage.addChild(child)
         return null
 
+    removeChild: (child) ->
+        self = this
+        self.stage.removeChild(child)
+        return null
+
+
+    removeAll: ->
+        self = this
+        for child in self.stage.children
+            self.stage.removeChild(child)
+        console.log self.stage
+        # for child in Stage.children
+        #     console.log child
+
 
     resize: ->
         self = this
-        console.log 'sizing'
-        self.renderer.view.style.width = window.innerWidth + 'px'
-        self.renderer.view.style.height = window.innerHeight + 'px'
+        winWidth = window.innerWidth
+        winHeight = window.innerHeight
+        
+        self.renderer.resize(winWidth, winHeight, {transparent: true})
+        #pass stage to animate
+        Animate.setStage(self.stage)
+        Animate.setRenderer(self.renderer)
 
 
 

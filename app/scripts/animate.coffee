@@ -35,21 +35,6 @@ Animate =
                     doll.x += doll.speed
                     doll.sprite.position.x += doll.speed
 
-                    if doll.goingUp
-                        
-                        if doll.upCount < doll.maxUp
-                            doll.sprite.position.y -= 0.5
-                            doll.upCount += 1
-                        else
-                            doll.goingUp = false
-
-                    else
-                        if doll.upCount > 0
-                            doll.upCount -= 1
-                            doll.sprite.position.y += 0.5
-                        else
-                            doll.goingUp = true
-
             
             #moving left
             else
@@ -58,22 +43,6 @@ Animate =
                 else
                     doll.x -= doll.speed
                     doll.sprite.position.x -= doll.speed
-
-                    if doll.goingUp
-                        
-                        if doll.upCount < doll.maxUp
-                            doll.sprite.position.y -= 1
-                            doll.upCount += 1
-                        else
-                            doll.goingUp = false
-
-                    else
-                        if doll.upCount > 0
-                            doll.upCount -= 0.5
-                            doll.sprite.position.y += 0.5
-                        else
-                            doll.goingUp = true
-        
 
         
 

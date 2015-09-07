@@ -12,7 +12,7 @@ Doll = (item, image) ->
     self = this
     
     self.xPos = Math.floor(Math.random() * window.innerWidth) / 3
-    self.yPos = (window.innerHeight - 300)
+    self.yPos = Math.floor(window.innerHeight / 2)
     self.direction = Math.round(Math.random())
     self.path = item.image
     self.bio = item.bio
@@ -41,10 +41,23 @@ Doll.prototype =
         self = this
         self.loadImage()
 
+        window.addEventListener 'resize', ->
+            self.resetY()
+
+
+    resetY: ->
+        self = this
+
+        self.yPos = Math.floor(window.innerHeight / 2)
+        self.y = self.yPos
+        self.sprite.position.set(self.x, self.y)
+
 
     loadImage: ->
         
         self = this
+
+        
  
             
         if self.direction == 0
@@ -71,30 +84,45 @@ Doll.prototype =
         #------------------------
         self.sprite.interactive = true
         self.sprite.buttonMode = true
+        self.sprite.defaultCursor = 'pointer'
         self.sprite.width = self.width
         self.sprite.height = self.height
         self.sprite.position.set(self.x, self.y)
-        
+        self.sprite.tint = '0xd0d0d0'
 
         self.sprite.on 'mousedown', (event) ->
             event.stopPropagation()
             Info.on(self)
+
+        self.sprite.on 'mouseover', (event) ->
+            self.sprite.tint = '0xFFFFFF'
+
+        self.sprite.on 'mouseout', (event) ->
+            self.sprite.tint = '0xd0d0d0'
+
+
+    
+
 
             # console.log self
 
         
 
         Stage.addChild(self.sprite)
+
         return
 
     
 
 
-    
+    swapImage: ->
+        self = this
+        self.sprite = PIXI.Sprite.fromImage('images/')
 
 
     checkStart: ->
         self = this
+
             
 
 

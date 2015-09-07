@@ -1,108 +1,44 @@
+// -------------------------------------------------
+//
+// Imports
+// 
+// -------------------------------------------------
+
+
 @import 'bourbon';
 
+
+// ------------------------------------------------
+// Base
+//
+
+@import 'base/vars';
+@import 'base/mixins';
 @import 'base/typo';
+@import 'base/base';
 @import 'base/animations';
+@import 'base/z';
+
+
+
+// ------------------------------------------------
+// Modules
+//
 
 @import 'modules/daily_overrides';
-
-
-
-* {
-  box-sizing: border-box;
-}
-
-::-webkit-scrollbar {
-  display: none;
-}
+@import "modules/loading";
+@import 'modules/main';
+@import "modules/character-overlay";
 
 
 
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-
-body {
-  background: url(../images/full.png), url(../images/beach.png);
-  background-attachment: fixed, fixed;
-  background-color: pink;
-  background-position: center bottom, top left;
-  background-repeat: no-repeat, repeat;
-  background-size: cover, cover;
-  font-family: Verdana, Helvetica, 'bit';
-  overflow: auto;
-  overflow-x: hidden;
-}
 
 
 
 
-.info{
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 33%;
-    height: auto;
-    padding: 20px auto auto 20px;
-    color: black;
-    background: rgba(255,255,255,0.9);
-    border-radius: 5px;
-    opacity: 0;
-    @include transition(opacity 0.4s linear);
-    font-family: 'bit';
-    &.active{
-        opacity: 1;
-    }
-    h2{
-        padding: 10px 0 0 20px;
-        line-height: 1;
-        color: blue;
-        letter-spacing: 10px;
-        text-transform: uppercase;
-    }
-    p{
-        line-height: 1;
-        padding: 20px;
-
-    }
-}
-
-header{
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    .overlay{
-        width: 100%;
-        height: 50%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        @include display(flex);
-        @include align-items(center);
-        @include justify-content(center);
-        @include flex-direction(column);
-        @include animation(flash 0.3s linear infinite);
-    }
-}
 
 
 
-.doll{
-    position: absolute;
-    height: 300px;
-    width: auto;
-    z-index: 3;
-    cursor: pointer !important;
 
-}
 
-.body{
-    padding: 10%;
-    line-height: 2;
-    margin: 0;
-    font-family: sans-serif;
-}
