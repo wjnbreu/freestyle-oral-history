@@ -1,130 +1,44 @@
+// -------------------------------------------------
+//
+// Imports
+// 
+// -------------------------------------------------
+
+
 @import 'bourbon';
 
-@include keyframes(flash){
-    0%{
-        color: rgba(227,81,255,1);
-    }
-    20%{
-        color: rgba(62,62,255,1);
-    }
-    40%{
-        color: rgba(255,39,238,1);
-    }
-}
 
-*{
-    box-sizing: border-box;
-}
+// ------------------------------------------------
+// Base
+//
 
-::-webkit-scrollbar {
-  display: none;
-}
-
-/* Webfont: 8BITWONDERNominal */@font-face {
-    font-family: 'bit';
-    src: url('../fonts/8BITWONDERNominal.eot'); /* IE9 Compat Modes */
-    src: url('../fonts/8BITWONDERNominal.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-         url('../fonts/8BITWONDERNominal.woff') format('woff'), /* Modern Browsers */
-         url('../fonts/8BITWONDERNominal.ttf') format('truetype'), /* Safari, Android, iOS */
-         url('../fonts/8BITWONDERNominal.svg#8BITWONDERNominal') format('svg'); /* Legacy iOS */
-    font-style: normal;
-    font-weight: normal;
-    text-rendering: optimizeLegibility;
-}
+@import 'base/vars';
+@import 'base/mixins';
+@import 'base/typo';
+@import 'base/base';
+@import 'base/animations';
+@import 'base/z';
 
 
 
-html,body{
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
+// ------------------------------------------------
+// Modules
+//
 
-body{
-    background: url(../images/full.png), url(../images/tile.gif);
-    background-repeat: no-repeat, repeat;
-    background-position: center bottom, top left;
-    background-color: pink;
-    background-attachment: fixed, fixed;
-    background-size: cover, 40px;
-    overflow: auto;
-    font-family: Helvetica, 'bit';
-    overflow-x: hidden;
-}
-
-
-h1,h2,h3,h4{
-    margin: 0;
-}
-
-h1{
-    font-size: 5em;
-}
-
-.info{
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 33%;
-    height: auto;
-    padding: 20px auto auto 20px;
-    color: black;
-    background: rgba(255,255,255,0.9);
-    border: 5px solid black;
-    border-radius: 5px;
-    display: none;
-    &.active{
-        display: block;
-    }
-    h2{
-        padding: 10px 0 0 20px;
-        line-height: 1;
-        color: blue;
-        letter-spacing: 10px;
-        text-transform: uppercase;
-    }
-    p{
-        line-height: 1;
-        padding: 0 20px;
-
-    }
-}
-
-header{
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    .overlay{
-        width: 100%;
-        height: 50%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        @include display(flex);
-        @include align-items(center);
-        @include justify-content(center);
-        @include flex-direction(column);
-        @include animation(flash 0.3s linear infinite);
-    }
-}
+@import 'modules/daily_overrides';
+@import "modules/loading";
+@import 'modules/main';
+@import "modules/character-overlay";
 
 
 
-.doll{
-    position: absolute;
-    height: 300px;
-    width: auto;
-    z-index: 3;
-    cursor: pointer !important;
 
-}
 
-.body{
-    background: white;
-    border-top: 2px solid black;
-    padding: 10%;
-    line-height: 2;
-    margin: 0;
-    font-family: sans-serif;
-}
+
+
+
+
+
+
+
+

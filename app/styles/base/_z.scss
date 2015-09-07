@@ -1,0 +1,6 @@
+.character-overlay{
+    z-index: 1;
+    &.active{
+        z-index: 999;
+    }
+}

@@ -1,32 +1,44 @@
 [
     {
         "name": "Debbie Deb",
-        "image": "images/doll1.gif",
+        "image": "images/01_Debbie_Deb_version1.png",
         "bio": "Bio about Debbie Deb",
         "audio": "audio/computer.mp3"
     },
     {
         "name": "Pretty Tony",
-        "image": "images/doll2.gif",
+        "image": "images/04_Pretty_Tony_Butler_version1.png",
         "bio": "Bio about Pretty Tony",
         "audio": "audio/pebbles.mp3"
     },
     {
         "name": "Trinere",
-        "image": "images/doll3.gif",
-        "bio": "Bio about Trinere",
+        "image": "images/07_Trinere_version1.png",
+        "bio": "The legendary Miami vocalist was Pretty Tony’s #1 hitmaker (and girlfriend) turning out enduring freestyle anthems like “They’re Playing Our Song.”",
         "audio": "audio/lifetime.mp3"
     },
     {
         "name": "Shannon",
-        "image": "images/doll4.gif",
+        "image": "images/05_Shannon_version1.png",
         "bio": "Bio about Shannon",
         "audio": "audio/computer.mp3"
     },
     {
-        "name": "Freestyle",
-        "image": "images/doll5.gif",
-        "bio": "Bio about Freestyle",
+        "name": "Lisa Lisa",
+        "image": "images/03_Lisa_Lisa_version1.png",
+        "bio": "One-third of Lisa Lisa & The Cult Jam, she achieved huge fame with 1985 hits like “I Wonder If I Take You Home” and “Can You Feel the Beat.”",
         "audio": "audio/lifetime.mp3"
+    },
+    {
+        "name": "Louis “Kayel” Sharpe",
+        "image": "images/02_Louis_Kayel_Sharpe_version1.png",
+        "bio": "The figurehead of male trio TKA, a long-lasting freestyle group who rose to fame with 1986’s “One Way Love,” produced by Latin Rascals.",
+        "audio": "audio/lifetime.mp3"
+    },
+    {
+        "name": "Louie Vega",
+        "image": "images/06_Louie_Vega_version1.png",
+        "bio": "Resident DJ at Devil’s Nest and Heartthrob, he produced (and broke) many freestyle hits before moving on to be a house music kingpin.",
+        "audio": "audio/pebbles.mp3"
     }
 ]
