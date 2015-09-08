@@ -11,6 +11,7 @@ browserSync = require 'browser-sync'
 coffeeify = require 'gulp-coffeeify'
 browserSync = require 'browser-sync'
 gzip = require 'gulp-gzip'
+rename = require 'gulp-rename'
 
 
 
@@ -18,7 +19,7 @@ gzip = require 'gulp-gzip'
 
 gulp.task 'browserify', ->
 
-    gulp.src('app/scripts/main.coffee')
+    gulp.src('app/scripts/bundle.coffee')
         .pipe(sourcemaps.init())
         .pipe(coffeeify({
             options:

@@ -2,13 +2,13 @@
     {
         "name": "Debbie Deb",
         "image": "images/01_Debbie_Deb_version1.png",
-        "bio": "Bio about Debbie Deb",
+        "bio": "This Miami native was discovered by Pretty Tony in a record store as a teen and catapulted to fame with the singles “When I Hear Music” and “Lookout Weekend.”",
         "audio": "audio/computer.mp3"
     },
     {
         "name": "Pretty Tony",
         "image": "images/04_Pretty_Tony_Butler_version1.png",
-        "bio": "Bio about Pretty Tony",
+        "bio": "Miami’s legendary DJ/producer behind electro hits such as “Jam the Box” and “The Party Has Just Begun,” plus freestyle stormers by Debbie Deb and Trinere.",
         "audio": "audio/pebbles.mp3"
     },
     {
@@ -20,7 +20,7 @@
     {
         "name": "Shannon",
         "image": "images/05_Shannon_version1.png",
-        "bio": "Bio about Shannon",
+        "bio": "The diva of freestyle, with hits like “Let the Music Play” and “Give Me Tonight.” Often known as the “Queen of Freestyle.”",
         "audio": "audio/computer.mp3"
     },
     {

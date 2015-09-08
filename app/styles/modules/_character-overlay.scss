@@ -8,10 +8,6 @@
     background: white;
     opacity: 0;
     z-index: -1;
-    @include display(flex);
-    @include flex-direction(column);
-    @include align-items(center);
-    @include justify-content(center);
     @include transition(opacity 0.4s linear);
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0800ff+0,e93cec+100 */
     background: url(../images/night-tile.png) repeat top left;
@@ -32,19 +28,41 @@
         cursor: pointer;
         // pointer-events: none;
     }
-    
-    h2{
-        @include uppercase();
-        font-size: 3em;
-        
-        font-weight: bold;
+
+    .infotext{
+        float: left;
+        width: 50%;
+        height: 100%;
+        @include display(flex);
+        @include flex-direction(column);
+        @include align-items(center);
+        @include justify-content(center);
+        h2{
+            @include uppercase();
+            font-size: 3em;
+            font-weight: bold;
+        }
+        p{
+            line-height: 2;
+        }
+
     }
+    
+    
     .portrait{
-        position: relative;
+        position: absolute;
+        right: 0;
+        float: right;
+        width: auto;
+        position: absolute;
         top: 0;
-        left: 0;
-        width: 20%;
-        height: auto;
+        height: 100%;
+        max-width: 50%;
+        width: 50%;
+        img{
+            max-height: 100%;
+            max-width: 100%;
+        }
     }
     &.active{
         opacity: 1;

@@ -1,0 +1,39 @@
+nav.main-nav{
+    box-shadow: 0 0 8px rgba(0,0,0,.2);
+    font-family: 'ClanPro';
+    height: 50px;
+    display: block;
+    @include display(flex);
+    @include flex-direction(row);
+    @include align-items(center);
+    @include justify-content(center);
+    opacity: 0;
+    .logo{
+        width: 60px;
+        height: 30px;
+        position: absolute;
+        top: 0;
+        left: 16px;
+        top: 9px;
+        bottom: 9px;
+        display: block;
+        background: url(../images/logo.svg) no-repeat center center;
+        background-size: contain;
+    }
+    .text{
+        display: none;
+        @include mq("medium"){
+            display: block;
+        }
+    }
+
+    &.headroom--pinned{
+        opacity: 1;
+    }
+    &.headroom--top{
+        opacity: 1;
+    }
+
+
+
+}

@@ -1,8 +1,15 @@
 'use strict'
 
-info = document.getElementById 'info'
+$ = require 'jquery'
+
+
 audio = document.getElementById 'audio'
 audiomp3 = document.getElementById 'mp3'
+exit = $('.exit')
+portrait = $('.portrait')
+info = $('.infotext')
+overlay = $('.character-overlay')
+
 
 
 
@@ -13,38 +20,31 @@ Info =
 
         self = this
 
+
+
         name = item.name
         bio = item.bio
-        template = "<h2>#{name}</h2><p>#{bio}</p>"
-        info.classList.add 'active'
-        info.innerHTML = template
+
+        info.find('h2').text name
+        info.find('p').text bio
+
+        overlay.addClass 'active'
+
         mp3.setAttribute 'src', ''
         mp3.setAttribute 'src', item.audio
 
-        exit = document.createElement 'div'
 
-        imageContainer = document.createElement 'div'
-        imageContainer.setAttribute 'class', 'portrait'
-
-        
-        exit.setAttribute 'class', 'exit'
-        exit.setAttribute 'id', 'exit'
-
-        info.appendChild imageContainer
-        info.appendChild exit
-
-        exit.addEventListener 'click', (ev) ->
+        exit.on 'click', (ev) ->
             ev.stopPropagation()
             self.off()
 
-        console.log item
 
 
 
         image = new Image()
 
         image.onload = ->
-            imageContainer.appendChild image
+            portrait.append image
 
         image.src = item.path
 
@@ -55,8 +55,10 @@ Info =
     off: ->
 
         self = this
-        info.classList.remove 'active'
-        info.innerHTML = ''
+        overlay.removeClass 'active'
+        info.find('h2').text('')
+        info.find('p').text('')
+        portrait.html('')
         audio.pause()
 
 

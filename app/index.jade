@@ -13,10 +13,9 @@ html
 
             //-Nav
             nav#nav.main-nav.bg-color-secondary
-                a(href="http://daily.redbullmusicacademy.com")
-                    .main-nav__title
-                        svg.main-nav__title__condensed(width="112", height="20", viewBox="0 0 112 20")
-                        svg.main-nav__title__full(width="280", height="20", viewBox="0 0 28 20")
+                a.logo(href="http://daily.redbullmusicacademy.com")
+                a.text(href="http://daily.redbullmusicacademy.com")
+                    img(src="images/type.svg")
 
 
 
@@ -26,6 +25,9 @@ html
                     .character-overlay#info
                         .exit
                         .portrait#portrait
+                        .infotext
+                            h2
+                            p
                     
                     #graphics
 
@@ -43,7 +45,7 @@ html
 
 
 
-                    .body.text-layout--left.type-sans-serif.bg-color-white
+                    .body.text-layout--left.type-sans-serif
                         .block.block-text.style-normal
                             p.
                                 The original Flavor Unit is best known for launching the 
@@ -301,5 +303,4 @@ html
                 audio#audio(loop, autoplay, controls=false)
                     source#mp3(src="", type="audio/mp3")
 
-        script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
-        script(src="js/main.js")
+        script(src="js/bundle.js")

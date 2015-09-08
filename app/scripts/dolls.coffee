@@ -48,8 +48,10 @@ Doll.prototype =
     resetY: ->
         self = this
 
+
         self.yPos = Math.floor(window.innerHeight / 2)
         self.y = self.yPos
+        console.log self.y
         self.sprite.position.set(self.x, self.y)
 
 

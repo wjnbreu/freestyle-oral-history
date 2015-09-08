@@ -9,6 +9,7 @@ Nav = require './nav'
 Background = require './background'
 Info = require './info'
 Mobile = require './mobile'
+$ = require 'jquery'
 
 
 #Data containers
