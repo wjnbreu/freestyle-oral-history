@@ -21,12 +21,13 @@ body {
   width: 100%;
 }
 
+
 body {
   background: url(../images/night.gif);
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: black;
+  background-color: rgba(170,159,170,1);
   font-family: Verdana, Helvetica, 'bit';
   overflow: auto;
   overflow-x: hidden;

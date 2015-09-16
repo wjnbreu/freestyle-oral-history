@@ -14,5 +14,6 @@ gulp.task 'dev', ['clean'], (cb) ->
         'fonts',
         'data',
         'audio',
+        'extras',
         'browserify'
         ], 'watch', cb)

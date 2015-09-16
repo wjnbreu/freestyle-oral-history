@@ -12,3 +12,4 @@ gulp.task 'watch', ['browserSync', 'serve'], ->
     gulp.watch(config.images.src, ['images'])
     # gulp.watch(config.fonts.src, ['fonts'])
     gulp.watch('app/**/*.jade', ['views'])
+    gulp.watch('app/**/*.html', ['extras'])

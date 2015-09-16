@@ -94,7 +94,7 @@ body {
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: black;
+  background-color: #aa9faa;
   font-family: Verdana, Helvetica, 'bit';
   overflow: auto;
   overflow-x: hidden; }
@@ -176,18 +176,9 @@ nav.main-nav {
   nav.main-nav.headroom--top {
     opacity: 1; }
 
-.body-wrap {
-  padding-left: 0;
-  padding-right: 0;
-  max-width: 100% !important; }
-
 .body {
   background-size: 40px;
-  color: #ff00ff; }
-
-.page,
-.page--coverstory {
-  padding-bottom: 0; }
+  color: #3D0E5E; }
 
 .video-player.hidden {
   display: none; }
