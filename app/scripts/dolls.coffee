@@ -25,7 +25,7 @@ Doll = (item, image) ->
     self.height = Math.floor(window.innerHeight / 2)
     self.img = image
     self.sprite = PIXI.Sprite.fromImage(item.image)
-    self.speed = Math.random()
+    self.speed = 0
     self.upCount = 0
     self.goingUp = false
     self.maxUp = Math.floor((Math.random() * 15) + 5)
@@ -38,6 +38,13 @@ Doll.prototype =
     
     init: ->
         self = this
+
+        self.speed = Math.random()
+
+        if self.speed < 0.3
+            self.speed = 0.5
+
+
         self.loadImage()
 
         window.addEventListener 'resize', ->

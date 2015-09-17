@@ -6,13 +6,14 @@ gulp = require 'gulp'
 browserSync = require 'browser-sync'
 gulpif = require 'gulp-if'
 gzip = require 'gulp-gzip'
+minifyHTML = require 'gulp-minify-html'
 
 
 gulp.task 'views', ->
     console.log config.views.src
 
     gulp.src('app/**/*.html')
-        .pipe(gulpif(global.isProd, gzip()))
+        .pipe(gulpif(global.isProd, minifyHTML()))
         .pipe(gulp.dest('build'))
         .pipe(gulpif(browserSync.active, browserSync.reload({
             stream: true
