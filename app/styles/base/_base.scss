@@ -12,22 +12,27 @@
 }
 
 
+// html{
+//   display: block;
+//   -webkit-font-smoothing: antialiased;
 
-html,
+// }
+
+
+// html,
+// body {
+//   height: 100%;
+//   margin: 0;
+//   padding: 0;
+//   width: 100%;
+// }
+
+
 body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-
-
-body {
-  background: url(../images/night.gif);
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: rgba(170,159,170,1);
+  
+  background: url(../images/pixel.png) repeat top left;
+  background-size: 3px;
+  background-color: $background;
   font-family: Verdana, Helvetica, 'bit';
   overflow: auto;
   overflow-x: hidden;

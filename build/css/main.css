@@ -82,19 +82,10 @@ h1 {
 ::-webkit-scrollbar {
   display: none; }
 
-html,
 body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  width: 100%; }
-
-body {
-  background: url(../images/night.gif);
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: #aa9faa;
+  background: url(../images/pixel.png) repeat top left;
+  background-size: 3px;
+  background-color: black;
   font-family: Verdana, Helvetica, 'bit';
   overflow: auto;
   overflow-x: hidden; }
@@ -121,6 +112,9 @@ body {
   z-index: 1; }
   .character-overlay.active {
     z-index: 999; }
+
+#graphics {
+  z-index: 6; }
 
 nav.main-nav {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
@@ -177,8 +171,12 @@ nav.main-nav {
     opacity: 1; }
 
 .body {
-  background-size: 40px;
-  color: #3D0E5E; }
+  color: #ff00ff;
+  padding: 0;
+  margin: 0; }
+
+.body-wrap {
+  padding: 0; }
 
 .video-player.hidden {
   display: none; }
@@ -233,8 +231,40 @@ nav.main-nav {
 .body {
   padding: 100px 50px; }
 
-#graphics {
-  z-index: 99; }
+header {
+  background: url(../images/night3.gif);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  margin-left: 0;
+  padding: 0 20px !important;
+  z-index: 1; }
+
+.video-frame iframe, .video-frame object, .video-frame embed {
+  opacity: 1;
+  transition: opacity 0.2s linear; }
+  .video-frame iframe.hidden, .video-frame object.hidden, .video-frame embed.hidden {
+    opacity: 0; }
+
+@-webkit-keyframes colorFlash {
+  0% {
+    color: #54fcfc; }
+  50% {
+    color: #54fcfc; }
+  50.01% {
+    color: #ff00ff; }
+  100% {
+    color: #ff00ff; } }
+
+@keyframes colorFlash {
+  0% {
+    color: #54fcfc; }
+  50% {
+    color: #54fcfc; }
+  50.01% {
+    color: #ff00ff; }
+  100% {
+    color: #ff00ff; } }
 
 .character-overlay {
   position: fixed;
@@ -249,12 +279,14 @@ nav.main-nav {
   z-index: -1;
   transition: opacity 0.4s linear;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0800ff+0,e93cec+100 */
-  background: url(../images/night-tile.png) repeat top left;
+  background: url(../images/pixel.png) repeat top left;
+  background-size: 3px;
+  background-color: black;
   padding: 0 10%;
   text-align: center;
   cursor: pointer;
   color: white;
-  font-family: "Bit";
+  font-family: 'Bit';
   margin: 0; }
   .character-overlay .exit {
     position: absolute;
@@ -299,10 +331,18 @@ nav.main-nav {
     .character-overlay .infotext h2 {
       text-transform: uppercase;
       letter-spacing: 0em;
-      font-size: 3em;
-      font-weight: bold; }
+      font-size: 5em;
+      font-weight: bold;
+      line-height: 1;
+      margin-bottom: 25px; }
+    .character-overlay .infotext h2 {
+      color: #ff00ff;
+      text-shadow: 0 1px 0 #ff00ff, -2px -2px 0 red, -3px -3px 0 red, -4px -4px 0 red, -5px -5px 0 red, -6px -6px 1px red, 0 0 5px red, 0 1px 3px red, 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
+      -webkit-animation: colorFlash 0.5s linear infinite;
+      animation: colorFlash 0.5s linear infinite; }
     .character-overlay .infotext p {
-      line-height: 2; }
+      line-height: 1.5;
+      font-family: 'Maison'; }
   .character-overlay .portrait {
     position: absolute;
     right: 0;

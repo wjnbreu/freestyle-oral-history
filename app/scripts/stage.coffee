@@ -16,10 +16,9 @@ Stage =
         winWidth = window.innerWidth
         winHeight = window.innerHeight
 
-        PIXI.scaleModes.DEFAULT = PIXI.scaleModes.NEAREST;
 
         #PIXI Setup
-        self.renderer = PIXI.autoDetectRenderer(winWidth, winHeight, {transparent: true})
+        self.renderer = new PIXI.CanvasRenderer(winWidth, winHeight, {transparent: true})
         parent.appendChild self.renderer.view
         self.stage = new PIXI.Container()
 

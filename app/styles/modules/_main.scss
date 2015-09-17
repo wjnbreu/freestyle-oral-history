@@ -2,8 +2,22 @@
     padding: 100px 50px;
 }
 
+header{
+    background: url(../images/night3.gif);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin-left: 0;
+    padding: 0 20px !important;
+    z-index: 1;
+}
 
-
-#graphics{
-    z-index: 99;
+.video-frame{
+    iframe,object,embed{
+        opacity: 1;
+        @include transition(opacity 0.2s linear);
+        &.hidden{
+            opacity: 0;
+        }
+    }
 }

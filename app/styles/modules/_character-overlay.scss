@@ -1,3 +1,20 @@
+@include keyframes(colorFlash){
+    0%{
+        color: $teal;
+    }
+    50%{
+        color: $teal;
+    }
+    50.01%{
+        color: $pink;
+    }
+    100%{
+        color: $pink;
+    }
+}
+
+
+
 .character-overlay{
     position: fixed;
     @include fast();
@@ -10,12 +27,14 @@
     z-index: -1;
     @include transition(opacity 0.4s linear);
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0800ff+0,e93cec+100 */
-    background: url(../images/night-tile.png) repeat top left;
+    background: url(../images/pixel.png) repeat top left;
+    background-size: 3px;
+    background-color: $background;
     padding: 0 10%;
     text-align: center;
     cursor: pointer;
     color: white;
-    font-family: "Bit";
+    font-family: 'Bit';
     margin: 0;
     .exit{
         position: absolute;
@@ -39,11 +58,32 @@
         @include justify-content(center);
         h2{
             @include uppercase();
-            font-size: 3em;
+            font-size: 5em;
             font-weight: bold;
+            line-height: 1;
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            color: $pink;
+            text-shadow: 0 1px 0 $pink,
+                -2px -2px 0 red,
+                -3px -3px 0 red,
+                -4px -4px 0 red,
+                -5px -5px 0 red,
+                -6px -6px 1px red,
+                0 0 5px red,
+                0 1px 3px red,
+                0 3px 5px rgba(0,0,0,.2),
+                0 5px 10px rgba(0,0,0,.25),
+                0 10px 10px rgba(0,0,0,.2),
+                0 20px 20px rgba(0,0,0,.15);
+            @include animation(colorFlash 0.5s linear infinite);
+
         }
         p{
-            line-height: 2;
+            line-height: 1.5;
+            font-family: 'Maison';
         }
 
     }

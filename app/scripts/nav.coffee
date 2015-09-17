@@ -6,7 +6,6 @@ Headroom = require 'headroom.js'
 
 module.exports = ->
 
-    console.log 'hit'
 
     header = document.getElementById 'nav'
 

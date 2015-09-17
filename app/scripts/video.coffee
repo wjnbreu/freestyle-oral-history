@@ -9,13 +9,13 @@ Video =
     
     init: ->
         self = this
-        self.videos = $('.video-player')
 
         self.parents = $('.video-frame')
 
         #add hidden classes to all videos
-        self.videos.each ->
-            $(this).addClass 'hidden'
+        self.parents.each (index) ->
+            $(this).attr 'id', 'video' + index
+            $(this).find('iframe').addClass 'hidden'
 
 
         self.parents.each ->
@@ -23,14 +23,16 @@ Video =
            
             item.on 'click', (e) ->
                 item.find('.video-frame__poster').hide()
-                player = item.find('.video-player')
+                
+                player = item.find('iframe')
+                
                 player.removeClass 'hidden'
 
-                src = player.find('iframe').attr 'src'
+                src = player.attr 'src'
 
                 src = src + 'autoplay=1'
 
-                player.find('iframe').attr 'src', src
+                player.attr 'src', src
 
 
         return
