@@ -10,6 +10,7 @@ autoprefixer = require 'autoprefixer-core'
 postcss = require 'gulp-postcss'
 sourcemaps = require 'gulp-sourcemaps'
 gutil = require 'gulp-util'
+gzip = require 'gulp-gzip'
 
 
 
@@ -25,6 +26,7 @@ gulp.task 'styles', ->
             }))
         .pipe(postcss([autoprefixer({browsers: ['last 2 versions']})]))
         .on('error', gutil.log)
+        .pipe(gulpif(global.isProd, gzip()))
         .pipe(gulp.dest(config.styles.dest))
         .pipe(gulpif(browserSync.active, browserSync.reload({
             stream: true

@@ -28,7 +28,7 @@ Video =
                 
                 player.removeClass 'hidden'
 
-                src = player.attr 'src'
+                src = player.data 'src'
 
                 src = src + 'autoplay=1'
 

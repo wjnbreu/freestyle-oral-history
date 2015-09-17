@@ -26,9 +26,6 @@
     opacity: 0;
     z-index: -1;
     @include transition(opacity 0.4s linear);
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0800ff+0,e93cec+100 */
-    background: url(../images/pixel.png) repeat top left;
-    background-size: 3px;
     background-color: $background;
     padding: 0 10%;
     text-align: center;
@@ -49,19 +46,31 @@
     }
 
     .infotext{
-        float: left;
-        width: 50%;
-        height: 100%;
+        float: none;
+        width: 100%;
+        height: 50%;
+        position: relative;
         @include display(flex);
         @include flex-direction(column);
         @include align-items(center);
         @include justify-content(center);
+        @include mq("large"){
+            width: 50%;
+            float: left;
+            height: 100%;
+        }
         h2{
             @include uppercase();
-            font-size: 5em;
+            font-size: 2.5em;
             font-weight: bold;
             line-height: 1;
             margin-bottom: 25px;
+            @include mq("medium"){
+                font-size: 4em;
+            }
+            @include mq("large"){
+                font-size: 5em;
+            }
         }
 
         h2 {
@@ -90,18 +99,29 @@
     
     
     .portrait{
-        position: absolute;
+        position: relative;
         right: 0;
-        float: right;
+        float: none;
         width: auto;
-        position: absolute;
         top: 0;
-        height: 100%;
-        max-width: 50%;
-        width: 50%;
+        height: 50%;
+        width: 100%;
+        overflow: hidden;
         img{
+            height: 100%;
+            width: auto;
             max-height: 100%;
-            max-width: 100%;
+        }
+        @include mq("large"){
+            position: absolute;
+            right: 0;
+            float: right;
+            width: auto;
+            top: 0;
+            height: 100%;
+            max-width: 50%;
+            width: 50%;
+
         }
     }
     &.active{

@@ -2,7 +2,6 @@
 
 PIXI = require 'pixi.js'
 Stage = require './stage'
-Loaded = require './loaded'
 Info = require './info'
 
 

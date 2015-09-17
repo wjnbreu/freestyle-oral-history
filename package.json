@@ -55,6 +55,7 @@
     "headroom.js": "^0.7.1",
     "jquery": "^2.1.4",
     "mobile-detect": "^1.2.1",
+    "modernizr": "^3.0.0",
     "pixi.js": "^3.0.7",
     "q": "^1.4.1",
     "velocity-animate": "^1.2.2"

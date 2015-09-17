@@ -8,13 +8,23 @@
 
 .body {
   color: $pink;
-  padding: 0;
-  margin: 0;
 
 }
 
 .body-wrap{
-  padding: 0;
+  // padding: 0;
+  // padding-left: 1rem;
+  // padding-right: 1rem;
+  max-width: 100%;
+}
+
+
+// blockquote{
+//     color: white;
+// }
+
+.figure__caption{
+    color: $pink;
 }
 
 // .page,
@@ -26,6 +36,10 @@
   &.hidden {
     display: none;
   }
+}
+
+.pt-xl{
+    text-align: center;
 }
 
 .main-nav{

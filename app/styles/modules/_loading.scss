@@ -7,7 +7,6 @@
     height: 100%;
     background: black;
     color: white;
-    z-index: 99;
     @include display(flex);
     @include flex-direction(column);
     @include align-items(center);

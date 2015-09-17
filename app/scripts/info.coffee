@@ -15,10 +15,34 @@ overlay = $('.character-overlay')
 
 
 Info =
+
+    ctx: null
+    buf: null
+    alreadyInit: false
+    src: null
+
+    init: ->
+
+        self = this
+
+        try
+            self.ctx = new AudioContext()
+        catch e
+            console.log 'No Web Audio Support, Sorry', e
+
+        self.alreadyInit = true
+        
+        
+
+
     
     on: (item) ->
 
         self = this
+
+        if self.alreadyInit == false
+            self.init()
+
 
 
 
@@ -30,13 +54,30 @@ Info =
 
         overlay.addClass 'active'
 
-        mp3.setAttribute 'src', ''
-        mp3.setAttribute 'src', item.audio
+        # mp3.setAttribute 'src', ''
+        # mp3.setAttribute 'src', item.audio
 
 
         exit.on 'click', (ev) ->
             ev.stopPropagation()
             self.off()
+
+
+        req = new XMLHttpRequest()
+
+        req.open 'GET', item.audio, true
+        req.responseType = 'arraybuffer'
+
+        req.onload = (response) ->
+            console.log req.response
+            self.ctx.decodeAudioData(req.response, (buffer) ->
+
+                self.buf = buffer
+                self.play()
+                )
+
+        req.send()
+
 
 
 
@@ -48,8 +89,23 @@ Info =
 
         image.src = item.path
 
-        audio.load()
-        audio.play()
+        # audio.load()
+        # audio.play()
+
+
+    play: ->
+        self = this
+
+        self.src = self.ctx.createBufferSource()
+        self.src.buffer = self.buf
+
+        self.src.connect(self.ctx.destination)
+
+        self.src.loop = true
+
+        self.src.start(0)
+
+
 
 
     off: ->
@@ -59,7 +115,7 @@ Info =
         info.find('h2').text('')
         info.find('p').text('')
         portrait.html('')
-        audio.pause()
+        self.src.stop()
 
 
 module.exports = Info

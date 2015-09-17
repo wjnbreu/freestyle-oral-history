@@ -12,65 +12,82 @@ Mobile = require './mobile'
 $ = require 'jquery'
 
 
-#Data containers
-stage = {}
+Piece = ->
+
+    self = this
+    self.isMobile = false
+    self.stage = null
+    self.info = null
+    self.stage = {}
+    self.init()
 
 
-#------------------------
-# Load Up Data
-#------------------------
-$.ajax
-    url: 'data/data.json'
-    success: (data) ->
+Piece.prototype =
 
-        isMobile = Mobile.init()
+    init: ->
 
-        #Add headroom
-        Nav()
+        self = this
 
-        if isMobile
-            document.body.classList.add 'mobile'
-            return
+        #------------------------
+        # Load Up Data
+        #------------------------
+        $.ajax
+            url: 'data/data.json'
+            success: (data) ->
 
-        else
+                self.isMobile = Mobile.init()
 
-            stage = Stage.init()
 
-            #Bind all videos so we have custom player
-            Video.init()
+                #Add headroom
+                new Nav()
 
-            #Set up background
-
-            
-
-            #Make sure user can exit overlay
-            info = document.getElementById 'info'
-            info.addEventListener 'click', (ev) ->
-                ev.stopPropagation()
-                Info.off()
-
-        
-            async.each data, ((item, callback) ->
-
-                image = new Image()
-
-                image.onload = ->
-
-                    newDoll = new Doll(item, image)
-                    Animate.dolls.push(newDoll)
-                    
-                    callback()
-
+                if self.isMobile
+                    document.body.classList.add 'mobile'
                     return
 
-                image.src = item.image
-
-
-            ), (err) ->
-                if err
-                    console.log 'Image failed to process'
                 else
-                    loading = document.getElementById('loading')
-                    loading.classList.add 'loaded'
-                    setTimeout(Animate.animate, 100)
+
+                    self.stage = Stage.init()
+
+                    #Bind all videos so we have custom player
+                    Video.init()
+
+                    #Set up background
+
+                    
+
+                    #Make sure user can exit overlay
+                    self.info = document.getElementById 'info'
+                    self.info.addEventListener 'click', (ev) ->
+                        ev.stopPropagation()
+                        Info.off()
+
+                
+                    async.each data, ((item, callback) ->
+
+                        image = new Image()
+
+                        image.onload = ->
+
+                            newDoll = new Doll(item, image)
+                            Animate.dolls.push(newDoll)
+                            
+                            callback()
+
+                            return
+
+                        image.src = item.image
+
+
+                    ), (err) ->
+                        if err
+                            console.log 'Image failed to process'
+                        else
+                            loading = document.getElementById('loading')
+                            loading.classList.add 'loaded'
+                            setTimeout(Animate.animate, 100)
+
+
+new Piece()
+
 
