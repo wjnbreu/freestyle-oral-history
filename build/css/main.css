@@ -155,10 +155,10 @@ nav.main-nav {
   height: 20px;
   padding-left: 25px; }
   .share-icon.twitter {
-    background: url(../images/facebook.svg) no-repeat center center;
+    background: url(../images/twitter.svg) no-repeat center center;
     background-size: 80%; }
   .share-icon.facebook {
-    background: url(../images/twitter.svg) no-repeat center center;
+    background: url(../images/facebook.svg) no-repeat center center;
     background-size: 80%; }
 
 .body {
@@ -178,6 +178,14 @@ nav.main-nav {
 
 .main-nav {
   z-index: 9 !important; }
+
+footer.main-footer {
+  background: black;
+  color: white; }
+  footer.main-footer h1 {
+    font-family: 'ClanPro'; }
+  footer.main-footer .social-icon .bg-color-body--svg {
+    fill: "#ffffff" !important; }
 
 #loading {
   position: fixed;

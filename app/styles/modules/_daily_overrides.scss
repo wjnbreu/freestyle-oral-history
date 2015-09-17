@@ -45,3 +45,18 @@
 .main-nav{
     z-index: 9 !important;
 }
+
+footer.main-footer{
+    background: black;
+    color: white;
+    h1{
+        font-family: 'ClanPro';
+    }
+    .social-icon{
+        .bg-color-body--svg{
+            fill: "#ffffff" !important;
+        }
+    }
+}
+
+

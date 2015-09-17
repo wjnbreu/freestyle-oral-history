@@ -9,6 +9,7 @@ Nav = require './nav'
 Background = require './background'
 Info = require './info'
 Mobile = require './mobile'
+Share = require './share'
 $ = require 'jquery'
 
 
@@ -86,6 +87,16 @@ Piece.prototype =
                             loading = document.getElementById('loading')
                             loading.classList.add 'loaded'
                             setTimeout(Animate.animate, 100)
+
+
+                $('.share-icon').each ->
+
+                    $(this).click (ev) ->
+                        ev.preventDefault()
+
+                        site = $(this).data('site')
+                        
+                        Share(site)
 
 
 new Piece()

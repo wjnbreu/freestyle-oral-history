@@ -3,19 +3,19 @@
         "name": "Debbie Deb",
         "image": "images/01_Debbie_Deb_version2.png",
         "bio": "This Miami native was discovered by Pretty Tony in a record store as a teen and catapulted to fame with the singles “When I Hear Music” and “Lookout Weekend.”",
-        "audio": "audio/computer.mp3"
+        "audio": "audio/debbie.mp3"
     },
     {
         "name": "Pretty Tony",
         "image": "images/04_Pretty_Tony_Butler_version2.png",
         "bio": "Miami’s legendary DJ/producer behind electro hits such as “Jam the Box” and “The Party Has Just Begun,” plus freestyle stormers by Debbie Deb and Trinere.",
-        "audio": "audio/pebbles.mp3"
+        "audio": "audio/pretty_tony.mp3"
     },
     {
         "name": "Trinere",
         "image": "images/07_Trinere_version2.png",
         "bio": "The legendary Miami vocalist was Pretty Tony’s #1 hitmaker (and girlfriend) turning out enduring freestyle anthems like “They’re Playing Our Song.”",
-        "audio": "audio/lifetime.mp3"
+        "audio": "audio/trinere.mp3"
     },
     {
         "name": "Shannon",
@@ -27,18 +27,18 @@
         "name": "Lisa Lisa",
         "image": "images/03_Lisa_Lisa_version2.png",
         "bio": "One-third of Lisa Lisa & The Cult Jam, she achieved huge fame with 1985 hits like “I Wonder If I Take You Home” and “Can You Feel the Beat.”",
-        "audio": "audio/lifetime.mp3"
+        "audio": "audio/lisa_lisa.mp3"
     },
     {
         "name": "Louis “Kayel” Sharpe",
         "image": "images/02_Louis_Kayel_Sharpe_version2.png",
         "bio": "The figurehead of male trio TKA, a long-lasting freestyle group who rose to fame with 1986’s “One Way Love,” produced by Latin Rascals.",
-        "audio": "audio/lifetime.mp3"
+        "audio": "audio/kayel.mp3"
     },
     {
         "name": "Louie Vega",
         "image": "images/06_Louie_Vega_version2.png",
         "bio": "Resident DJ at Devil’s Nest and Heartthrob, he produced (and broke) many freestyle hits before moving on to be a house music kingpin.",
-        "audio": "audio/pebbles.mp3"
+        "audio": "audio/vega.mp3"
     }
 ]
