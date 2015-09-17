@@ -13,6 +13,7 @@ body {
   background-color: $background;
   font-family: Verdana, Helvetica, 'bit';
   line-height: 1.5;
+  overflow-x: hidden;
   .mobile{
     background: url(../images/still.gif);
   }

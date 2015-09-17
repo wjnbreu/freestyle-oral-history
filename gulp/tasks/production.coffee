@@ -13,6 +13,7 @@ gulp.task 'prod', ['clean'], (cb) ->
         'images',
         'fonts',
         'data',
+        'audio',
         'browserify',
         'extras'
         ], cb)

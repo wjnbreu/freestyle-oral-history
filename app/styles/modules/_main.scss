@@ -3,7 +3,7 @@ header{
     background: url(../images/night3.gif);
     background-position: center center;
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 60%;
     margin-left: 0;
     padding: 0 20px !important;
     margin-bottom: 0;
@@ -12,6 +12,18 @@ header{
     text-align: center;
     overflow: hidden;
     width: 100%;
+    canvas{
+        display: none;
+    }
+    @include mq("medium"){
+        canvas{
+            display: block;
+        }
+    }
+    @include mq("large"){
+        background-size: 100%;
+
+    }
    
 }
 

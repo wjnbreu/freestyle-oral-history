@@ -20,6 +20,9 @@ Piece = ->
     self.stage = null
     self.info = null
     self.stage = {}
+    self.width = window.innerWidth
+    self.height = window.innerHeight
+    self.graphics = document.getElementById 'graphics'
     self.init()
 
 
@@ -38,24 +41,28 @@ Piece.prototype =
 
                 self.isMobile = Mobile.init()
 
+                setSize = ->
+                    self.graphics.style.width = self.width + 'px'
+                    self.graphics.style.height = self.height + 'px'
+
+                window.addEventListener 'resize', ->
+                    self.width = window.innerWidth
+                    self.height = window.innerHeight
+                    setSize()
+
+                setSize()
+
 
                 #Add headroom
                 new Nav()
 
                 if self.isMobile
                     document.body.classList.add 'mobile'
-                    return
+                    loading = document.getElementById('loading')
+                    loading.classList.add 'loaded'
 
-                else
-
+                if !self.isMobile
                     self.stage = Stage.init()
-
-                    #Bind all videos so we have custom player
-                    Video.init()
-
-                    #Set up background
-
-                    
 
                     #Make sure user can exit overlay
                     self.info = document.getElementById 'info'
@@ -63,7 +70,7 @@ Piece.prototype =
                         ev.stopPropagation()
                         Info.off()
 
-                
+
                     async.each data, ((item, callback) ->
 
                         image = new Image()
@@ -88,7 +95,11 @@ Piece.prototype =
                             loading.classList.add 'loaded'
                             setTimeout(Animate.animate, 100)
 
+                    
+                #Bind all videos so we have custom player
+                Video.init()
 
+                #setup sharing
                 $('.share-icon').each ->
 
                     $(this).click (ev) ->
@@ -97,6 +108,14 @@ Piece.prototype =
                         site = $(this).data('site')
                         
                         Share(site)
+
+                
+
+    
+
+            
+
+        return
 
 
 new Piece()

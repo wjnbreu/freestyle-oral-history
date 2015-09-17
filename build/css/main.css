@@ -49,7 +49,8 @@ body {
 body {
   background-color: black;
   font-family: Verdana, Helvetica, 'bit';
-  line-height: 1.5; }
+  line-height: 1.5;
+  overflow-x: hidden; }
   body .mobile {
     background: url(../images/still.gif); }
 
@@ -187,6 +188,12 @@ footer.main-footer {
   footer.main-footer .social-icon .bg-color-body--svg {
     fill: "#ffffff" !important; }
 
+.meta--cover {
+  text-align: center;
+  color: #ff00ff;
+  margin: 0 auto;
+  margin-bottom: 1.5em; }
+
 #loading {
   position: fixed;
   -webkit-transform: translate3d(0, 0, 0);
@@ -234,7 +241,7 @@ header {
   background: url(../images/night3.gif);
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: 60%;
   margin-left: 0;
   padding: 0 20px !important;
   margin-bottom: 0;
@@ -243,6 +250,14 @@ header {
   text-align: center;
   overflow: hidden;
   width: 100%; }
+  header canvas {
+    display: none; }
+  @media (min-width: 700px) {
+    header canvas {
+      display: block; } }
+  @media (min-width: 1040px) {
+    header {
+      background-size: 100%; } }
 
 .video-frame iframe, .video-frame object, .video-frame embed {
   opacity: 1;

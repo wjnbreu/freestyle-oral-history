@@ -61,6 +61,12 @@
 
                     <header id="graphics"></header>
 
+                    <h4 class="meta meta--cover type-sans-serif" ng-if="doc.firstPublished || doc.authors.length">
+                        <div class="meta__date ng-binding ng-scope" ng-if="doc.firstPublished">September 21, 2015</div>
+                        <div class="meta__author ng-scope" ng-if="doc.authors.length">By <author-link authors="doc.authors" class="ng-isolate-scope">
+                        <span>
+
+                        <a class="underlined" pagetype="'author'" href="http://daily.redbullmusicacademy.com/author/vivian-host">Vivian Host</a></span><!-- end ngRepeat: author in authors --></author-link></div><!-- end ngIf: doc.authors.length --> </h4>
 
 
                     <div class="body text-layout--center type-sans-serif">
