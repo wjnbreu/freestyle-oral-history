@@ -5,13 +5,14 @@ header{
     background-repeat: no-repeat;
     background-size: 60%;
     margin-left: 0;
-    padding: 0 20px !important;
+    padding: 0 !important;
     margin-bottom: 0;
     height: auto;
     position: relative;
     text-align: center;
     overflow: hidden;
     width: 100%;
+    left: 0;
     canvas{
         display: none;
     }
@@ -21,7 +22,7 @@ header{
         }
     }
     @include mq("large"){
-        background-size: 100%;
+        background-size: 90%;
 
     }
    

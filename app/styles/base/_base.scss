@@ -7,6 +7,13 @@
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
+html{
+    width: 100%;
+}
 
 body {
   
@@ -14,7 +21,6 @@ body {
   font-family: Verdana, Helvetica, 'bit';
   line-height: 1.5;
   overflow-x: hidden;
-  .mobile{
-    background: url(../images/still.gif);
-  }
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
 }

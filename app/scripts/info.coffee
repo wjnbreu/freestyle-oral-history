@@ -69,7 +69,6 @@ Info =
         req.responseType = 'arraybuffer'
 
         req.onload = (response) ->
-            console.log req.response
             self.ctx.decodeAudioData(req.response, (buffer) ->
 
                 self.buf = buffer
