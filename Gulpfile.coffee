@@ -27,7 +27,49 @@ plumber = require 'gulp-plumber'
 source = require 'vinyl-source-stream'
 buffer = require 'vinyl-buffer'
 uglify = require 'gulp-uglify'
+rev = require 'gulp-rev'
+revReplace = require 'gulp-rev-replace'
+revNapkin = require 'gulp-rev-napkin'
+size = require 'gulp-size'
 
+
+
+s3 = require 'gulp-s3'
+fs = require 'fs'
+
+chalk = require 'chalk'
+
+
+
+#-----------------------------------------
+#
+# Errors
+#
+#-----------------------------------------
+
+map_error = (err) ->
+
+    if (err.fileName)
+
+        #regular error
+        gutil.log(chalk.red(err.name))
+
+        + ': '
+        + chalk.yellow(err.fileName.replace(__dirname + '/src/js/', ''))
+        + ': '
+        + 'Line '
+        + chalk.magenta(err.lineNumber)
+        + ' & '
+        + 'Column '
+        + chalk.magenta(err.columnNumber || err.column)
+        + ': '
+        + chalk.blue(err.description)
+    else
+        gutil.log(chalk.red(err.name))
+        + ': '
+        + chalk.yellow(err.message)
+
+    this.end()
 
 
 #-----------------------------------------
@@ -54,6 +96,14 @@ gulp.task 'clean', (cb) ->
 
 
 
+#-----------------------------------------
+#
+# ICONS
+#
+#-----------------------------------------
+gulp.task 'icons', ->
+    return gulp.src(config.src + '/icons')
+        .pipe(gulp.dest.root)
 
 
 #-----------------------------------------
@@ -73,7 +123,7 @@ gulp.task 'data', ->
 #-----------------------------------------
 gulp.task 'extras', ->
 
-    gulp.src(config.extras)
+    gulp.src(config.extras, {base: config.src})
         .pipe(gulp.dest(config.dist.root))
 
 
@@ -120,14 +170,37 @@ gulp.task 'js', ->
         }).transform(babelify)
 
     return b.bundle()
+        .on('error', map_error)
         .pipe(plumber())
         .pipe(source('bundle.js'))
         .pipe(buffer())
         .pipe(sourcemaps.init({loadMaps: true}))
-        .pipe(uglify())
-        .on('error', gutil.log)
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(config.scripts.dest))
+        .pipe(size({showFiles: true}))
+
+
+
+#-----------------------------------------
+#
+# JS Prod
+#
+#-----------------------------------------
+gulp.task 'prod-js', ->
+
+    b = browserify({
+        entries: config.scripts.main
+        debug: false
+        }).transform(babelify)
+
+    return b.bundle()
+        .on('error', map_error)
+        .pipe(plumber())
+        .pipe(source('bundle.js'))
+        .pipe(buffer())
+        .pipe(uglify())
+        .pipe(gulp.dest(config.scripts.dest))
+        .pipe(size({showFiles: true}))
 
 
 
@@ -150,6 +223,29 @@ gulp.task 'styles', ->
         .pipe(postcss([autoprefixer({browsers: ['last 2 versions']})]))
         .on('error', gutil.log)
         .pipe(gulp.dest(config.styles.dest))
+        .pipe(size({showFiles: true}))
+        .pipe(browserSync.stream())
+
+
+
+gulp.task 'prod-styles', ->
+
+    gulp.src(config.styles.src)
+        .pipe(plumber())
+        .pipe(sass({
+            includePaths: require('node-bourbon').includePaths
+            sourceComments: 'none'
+            sourceMap: 'sass'
+            outputStyle: 'compressed'
+            }))
+
+
+        .pipe(postcss([autoprefixer({browsers: ['last 2 versions']})]))
+        .on('error', gutil.log)
+        .pipe(gulp.dest(config.styles.dest))
+        .pipe(size({showFiles: true}))
+
+
 
 
 
@@ -184,6 +280,55 @@ gulp.task('browser-sync', ->
         })
     )
 
+
+
+#-----------------------------------------
+#
+# S3
+#
+#-----------------------------------------
+
+
+
+aws = JSON.parse(fs.readFileSync('./aws.json'))
+
+gulp.task 's3', ->
+    gulp.src './build/**'
+        .pipe(s3(aws))
+
+
+
+
+#-----------------------------------------
+#
+# FILE REV
+#
+#-----------------------------------------
+
+gulp.task 'rev', ->
+
+    gulp.src(['build/**/*.css', 'build/**/*.js'])
+        .pipe(rev())
+        .pipe(gulp.dest('build/'))
+        .pipe(rev.manifest())
+        .pipe(gulp.dest('build/'))
+        .pipe(revNapkin())
+
+
+
+
+
+gulp.task 'rev-replace', ['rev'], ->
+
+    manifest = gulp.src('./build/rev-manifest.json')
+
+    gulp.src('build/index.html')
+        .pipe(revReplace({
+            manifest: manifest
+            }))
+        .on('error', gutil.log)
+        .pipe(plumber())
+        .pipe(gulp.dest(config.dist.root))
 #-----------------------------------------
 #
 # TASKS
@@ -191,9 +336,6 @@ gulp.task('browser-sync', ->
 #-----------------------------------------
 
 
-gulp.task('reload-sass', ['styles'], ->
-    browserSync.reload();
-    )
 
 gulp.task('reload-js', ['js'], ->
     browserSync.reload()
@@ -225,9 +367,28 @@ gulp.task 'dev', ['clean'], ->
 
     
 
-    gulp.watch(config.styles.src, ['reload-sass'])
+    gulp.watch(config.styles.src, ['styles'])
     gulp.watch(config.scripts.src, ['reload-js'])
     gulp.watch(config.views.src, ['reload-html'])
+
+
+
+
+
+gulp.task 'prod', ['clean'], ->
+
+    global.isProd = true
+
+    runSequence([
+        'html'
+        'prod-styles'
+        'prod-js',
+        'extras',
+        'data',
+        'fonts',
+        'images',
+        'audio',
+    ], ['rev-replace'], ['browser-sync'])
 
 
 

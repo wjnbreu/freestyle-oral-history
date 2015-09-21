@@ -43,9 +43,11 @@ module.exports = {
         'dest': 'build/images'
     }
 
+    'src': 'app/'
+
     'dist': {
         'root': 'build'
     }
 
-    extras: ['app/.htaccess', 'app/robots.txt', 'app/favicon.ico']
+    extras: ['app/.htaccess', 'app/robots.txt', 'app/favicon.ico', 'app/icons/*']
 }

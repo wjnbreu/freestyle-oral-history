@@ -1,9 +1,9 @@
 
 header{
-    background: url(../images/night3.gif);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: 60%;
+    background: url(../images/transparent.png), url(../images/night3.gif);
+    background-position: center 80%, center center;
+    background-repeat: no-repeat, no-repeat;
+    background-size: contain, contain;
     margin-left: 0;
     padding: 0 !important;
     margin-bottom: 0;
@@ -17,15 +17,23 @@ header{
     canvas{
         display: none;
     }
+
     @include mq("medium"){
+        background: url(../images/transparent.png), url(../images/night3.gif);
+        background-position: center 95%, center center;
+        background-repeat: no-repeat, no-repeat;
+        background-size: contain, 70%;
+    }
+    @include mq("large"){
+        margin-bottom: 5em;
+        background: url(../images/night3.gif);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 90%;
         canvas{
             display: block;
             margin-bottom: 2em;
         }
-    }
-    @include mq("large"){
-        background-size: 90%;
-        margin-bottom: 5em;
 
     }
    
