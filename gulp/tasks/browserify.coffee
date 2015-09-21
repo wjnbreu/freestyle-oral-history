@@ -10,7 +10,6 @@ uglify = require 'gulp-uglify'
 browserSync = require 'browser-sync'
 coffeeify = require 'gulp-coffeeify'
 browserSync = require 'browser-sync'
-gzip = require 'gulp-gzip'
 rename = require 'gulp-rename'
 
 
@@ -20,15 +19,14 @@ rename = require 'gulp-rename'
 gulp.task 'browserify', ->
 
     gulp.src('app/scripts/bundle.coffee')
-        .pipe(sourcemaps.init())
+        .pipe(gulpif(!global.isProd, sourcemaps.init()))
         .pipe(coffeeify({
             options:
                 ignoreMissing: true
                 debug: true
             }))
         .pipe(gulpif(global.isProd, uglify()))
-        .pipe(sourcemaps.write())
-        .pipe(gulpif(global.isProd, gzip()))
+        .pipe(gulpif(!global.isProd, sourcemaps.write()))
         .pipe(gulp.dest('./build/js'))
         .pipe(gulpif(browserSync.active, browserSync.reload({
             stream: true

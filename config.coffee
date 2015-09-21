@@ -22,17 +22,15 @@ module.exports = {
     }
 
     'scripts': {
-        'src': 'app/scripts/**/*.coffee'
+        'src': 'app/scripts/**/*.js'
         'dest': 'build/js'
+        'main': 'app/scripts/main.js'
+        'base': 'app/scripts/'
     }
 
     'views': {
-        'watch': [
-            'app/index.jade'
-            'app/views/**/*.jade'
-        ]
-        'src': 'app/views/**/*.jade'
-        'dest': 'app/views'
+        'src': 'app/**/*.html'
+        'dest': 'build'
     }
 
     'fonts': {
@@ -48,4 +46,6 @@ module.exports = {
     'dist': {
         'root': 'build'
     }
+
+    extras: ['app/.htaccess', 'app/robots.txt', 'app/favicon.ico']
 }

@@ -9,11 +9,12 @@ gulp.task 'dev', ['clean'], (cb) ->
 
     runSequence([
         'styles',
-        'views',
+        'browserify',
+        'revreplace',
         'images',
         'fonts',
         'data',
         'audio',
         'extras',
-        'browserify'
+        'views'
         ], 'watch', cb)
