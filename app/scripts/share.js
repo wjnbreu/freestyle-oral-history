@@ -4,9 +4,9 @@
 module.exports = function(site){
 
     if (site === 'twitter'){
-        var tweet = 'Freestyle: An Oral History';
+        var tweet = 'Freestyle: An oral history of the addictive ’80s genre #FreestyleWeek #RBMADaily';
         window.open('https://twitter.com/home?status=' +
-            (encodeURIComponent(tweet + ' @RBMA' + ' ' +
+            (encodeURIComponent(tweet + ' ' +
             window.location.href)),
             'Twitter',
             'toolbar=no,width=450,height=400,directories=no,status=no,scrollbars=yes,resize=no,menubar=no,top=200,left=200');
